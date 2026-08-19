@@ -33,22 +33,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 2. (OPCIONAL) Se seu projeto precisar de dependências, configure o Node
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-          cache: 'npm'
-
-      # 3. (OPCIONAL) Instala as dependências
-      - name: Install dependencies
-        run: npm install
-
-      # 4. (OPCIONAL) Executa o build do seu projeto, se necessário
-      # Substitua 'npm run build' pelo comando de build do seu projeto.
-      - name: Build project
-        run: npm run build
-
       # 5. Configura o GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v4
