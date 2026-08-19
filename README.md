@@ -101,15 +101,17 @@ Site institucional single page desenvolvido para a empresa **Alto Nível Constru
 - Google Fonts
 
 ## 📁 Estrutura do Projeto
+```
 /
 ├── index.html              # Página principal (single page)
 ├── css/
 │   └── styles.css          # Estilos personalizados
 ├── js/
 │   └── main.js             # Scripts e interações
-├── assets/
-│   └── img/                # Imagens, logo e ícones
+├── img/
+│   └──                     # Imagens, logo e ícones
 └── README.md               # Documentação
+```
 
 ## 📱 Responsividade
 
