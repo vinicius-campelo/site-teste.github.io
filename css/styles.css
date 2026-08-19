@@ -254,3 +254,8 @@ textarea{ resize:vertical; }
 }
 .whats-float svg{ width:28px; height:28px; }
 .whats-float:hover{ transform: scale(1.08); }
+
+/* ============ RESPONSIVO PARA TELAS PEQUENAS (360x740) ============ */
+@media screen and (max-width: 420px) {
+  .info-card { padding: 9px !important; }
+}
