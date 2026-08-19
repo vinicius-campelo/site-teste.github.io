@@ -96,19 +96,23 @@ Site institucional single page desenvolvido para a empresa **Alto Nível Constru
 - HTML5
 - CSS3
 - JavaScript (Vanilla)
-- Bootstrap 4
+- Bootstrap 4 (ainda não aplicado)
 - Font Awesome (ícones)
 - Google Fonts
 
 ## 📁 Estrutura do Projeto
 /
 ├── index.html # Página principal (single page)
+
 ├── css/
 │ └── styles.css # Estilos personalizados
+
 ├── js/
 │ └── main.js # Scripts e interações
+
 ├── assets/
 │ └── img/ # Imagens, logo e ícones
+
 └── README.md # Documentação
 
 
