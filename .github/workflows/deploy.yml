@@ -1,0 +1,67 @@
+# Nome do workflow, que aparecerá na aba "Actions" do GitHub
+name: Deploy static content to Pages
+
+# Define quando o workflow será executado
+on:
+  # Executa ao fazer um push na branch principal (a sua pode ser 'main' ou 'master')
+  push:
+    branches: ["main"] # <<< ALTERE AQUI se sua branch principal tiver outro nome
+
+  # Permite executar o workflow manualmente pela aba "Actions"
+  workflow_dispatch:
+
+# Define as permissões para o GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Permite apenas uma execução por vez, cancelando as que estiverem na fila
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Job de deploy para conteúdo estático
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Baixa o código do seu repositório
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. (OPCIONAL) Se seu projeto precisar de dependências, configure o Node
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      # 3. (OPCIONAL) Instala as dependências
+      - name: Install dependencies
+        run: npm install
+
+      # 4. (OPCIONAL) Executa o build do seu projeto, se necessário
+      # Substitua 'npm run build' pelo comando de build do seu projeto.
+      - name: Build project
+        run: npm run build
+
+      # 5. Configura o GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      # 6. Faz o upload dos arquivos para o Pages
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # ATENÇÃO: Altere o caminho para a pasta onde estão seus arquivos finais.
+          # Se seus arquivos estão na raiz, use './'. Se for uma pasta 'dist', use './dist'.
+          path: './dist'  # <<< ALTERE AQUI se necessário
+
+      # 7. Publica os arquivos no GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
